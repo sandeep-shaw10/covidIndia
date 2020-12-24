@@ -20,10 +20,41 @@
         <title>Covid Tracker</title>
     </head>
     <body>
-        <!--------NAVBAR-->
-        <div class="bg-image">
-            <img src="assets/svg/banner.svg" alt="bg-images">
+        
+        <!--------MASK & DATA--------->
+        <div class="bg-image-bg">
+            <div class="bg-image">
+                <img src="assets/svg/banner.svg" alt="bg-images">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-around">
+                            <div class="world world-confirm ">
+                                <div class="text-dark">Total Confirm</div>
+                                <div class="total" id="world-total-confirm"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                <div class="new text-dark" id="world-new-confirm"> <i class="fa fa-refresh fa-spin"></i> </div>
+                            </div>
+                            <div class="world world-recovery" >
+                                <div class="text-dark">Total Recovery</div>
+                                <div class="total" id="world-total-recover"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                <div class="new text-dark" id="world-new-recover"> <i class="fa fa-refresh fa-spin"></i> </div>
+                            </div>
+                            <div class="world world-death" >
+                                <div class="text-dark">Total Death</div>
+                                <div class="total" id="world-total-death"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                <div class="new text-dark" id="world-new-death"> <i class="fa fa-refresh fa-spin"></i> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <h1 class="text-center">GLOBAL CASES</h1>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!--------NAVBAR--------->
         <nav class="navbar navbar-light bg-none">
             <div class="container-fluid">
                 <img class="navbar-brand img-fluid mx-4" src="assets/images/logo.png" width="40px" height="40px"/>
@@ -31,6 +62,8 @@
                 <i class="fa fa-align-justify  mx-4" id="openbtn"></i>
             </div>
         </nav>
+
+        <!--------NAVBAR POP-UP--------->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn">&times;</a>
             <a href="#">Home </a>
@@ -39,13 +72,29 @@
             <a href="#">Guidelines</a>
         </div>
 
+        <!---Chart-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <canvas id="doughnut-chart" width="90%" height="90%"></canvas>
+                    <button class="btn btn-outline-danger my-2" id="globalUpdate">Update</button>
+                </div>
+                <div class="col-lg-6 my-auto">
+                    <div class="bg-danger mx-auto">
+                        <i class="fa fa-globe fa-5x" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Optional JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="js/test.js"></script>
+    <script src="js/worldFetch.js"></script>
 </body>
 </html>
 

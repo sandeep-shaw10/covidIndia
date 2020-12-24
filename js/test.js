@@ -23,9 +23,9 @@ async function getData(){
             dataDeath[i] = data.cases_time_series[i].dailydeceased
             dataRecover[i] = data.cases_time_series[i].dailyrecovered
         }
-        console.log("CONFIRM CASES\n" + dataConfirm);
-        console.log("DEATH CASES\n" + dataDeath);
-        console.log("RECOVER CASES\n" + dataRecover);
+        //console.log("CONFIRM CASES\n" + dataConfirm);
+        //console.log("DEATH CASES\n" + dataDeath);
+        //console.log("RECOVER CASES\n" + dataRecover);
     }catch(error){
         console.log(`The Error : ${error}`);
     }

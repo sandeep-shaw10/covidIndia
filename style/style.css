@@ -10,6 +10,10 @@
     font-size: 20px;
 }
 
+body{
+  background-color: thistle;
+}
+
 .navbar{
     z-index: 1 !important;
     position: absolute !important;
@@ -57,6 +61,52 @@
     margin-left: 50px;
   }
 
+.bg-image{
+  max-width: 992px;
+  margin:0px auto;
+}
+
+.world{
+  width:24vw;
+  height:21vw;
+  position: relative;
+  top:-5vw;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 8px #000;
+  margin: 5px;
+  color: #f1f1f1;
+  text-shadow: 0 0 1px rgb(255, 255, 255);
+  letter-spacing: 2px;
+}
+
+.world:hover{
+  transform: scale(1.01);
+  transition: 200ms;
+  cursor: pointer;
+}
+
+.world-confirm{background-color: rgb(255, 155, 6);}
+.world-recovery{background-color: rgb(0, 194, 87);}
+.world-death{background-color: rgb(252, 64, 64);}
+
+.world div{
+  font-size: 3vw;
+  font-weight: 600;
+  position: relative;
+  top:0px;
+}
+
+.world .total{
+  font-size: 3.5vw;
+  margin: 10px 0;
+}
+
+.world .new{
+  font-size: 2.5vw;
+}
+
+
 /*----Hover----*/
 
 
@@ -66,12 +116,26 @@
 /*----Media Query----*/
 
   
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-    #siteName {display: none !important;}
-  }
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  #siteName {display: none !important;}
+}
 
-  @media screen and (max-width: 450px) {
-    #siteName {display: none !important;}
-  }
+@media screen and (max-width: 450px) {
+  #siteName {display: none !important;}
+}
+
+@media screen and (max-width: 768px) {
+  .world .total{font-size:4vw;}
+}
+
+@media screen and (min-width: 768px) {
+  .world{width:180px;height:150px;}
+  .world div{font-size: 25px;}
+}
+
+@media screen and (min-width: 992px) {
+  .world .total{font-size: 35px;}
+  .world .new{font-size: 25px;}
+}
