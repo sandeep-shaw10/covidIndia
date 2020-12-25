@@ -1,8 +1,9 @@
 //Global Variable
 //var gConfirm, gActive, gRecover, gDeath;
-var gData = [] 
+var gData = [];
 var date = new Date();
-var strDate =  date.getDate()+ "/" + (date.getMonth()+1) + "/" + date.getFullYear() ;
+var strDate =  date.getDate()+ "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+var animate1 = true;
 
 //Updating Chart
 function updateConfigByMutating(active,recover,death) {
@@ -19,12 +20,12 @@ async function getData(){
         const globalData = await json.json();
         console.log(globalData);
 
-        $(".world-confirm .total").text(roundData(globalData.Global["TotalConfirmed"]))
-        $(".world-confirm .new").text("+"+roundData(globalData.Global["NewConfirmed"]))
-        $(".world-recovery .total").text(roundData(globalData.Global["TotalRecovered"]))
-        $(".world-recovery .new").text("+"+roundData(globalData.Global["NewRecovered"]))
-        $(".world-death .total").text(roundData(globalData.Global["TotalDeaths"]))
-        $(".world-death .new").text("+"+roundData(globalData.Global["NewDeaths"]))
+        $(".world-confirm .total").text(roundData(globalData.Global["TotalConfirmed"]));
+        $(".world-confirm .new").text("+"+roundData(globalData.Global["NewConfirmed"]));
+        $(".world-recovery .total").text(roundData(globalData.Global["TotalRecovered"]));
+        $(".world-recovery .new").text("+"+roundData(globalData.Global["NewRecovered"]));
+        $(".world-death .total").text(roundData(globalData.Global["TotalDeaths"]));
+        $(".world-death .new").text("+"+roundData(globalData.Global["NewDeaths"]));
 
         gData[0] = globalData.Global["TotalConfirmed"];
         gData[1] = globalData.Global["TotalRecovered"];
@@ -41,17 +42,17 @@ getData();
 
 //FORMAT API DATA
 function roundData(figure){
-    let val 
+    let val ;
     if(figure>=1000000){
-        val = figure/1000000
-        val = val.toFixed(2).toString()+" M"
+        val = figure/1000000;
+        val = val.toFixed(2).toString()+" M";
     }else if(figure>=1000){
-        val = figure/1000
-        val = val.toFixed(2).toString()+" K"
+        val = figure/1000;
+        val = val.toFixed(2).toString()+" K";
     }else{
-        val = figure
+        val = figure;
     }
-    return val
+    return val;
 }
 
 //CHARt
@@ -70,15 +71,26 @@ var globalChart = new Chart($("#doughnut-chart"), {
     options: {
       title: {
         display: true,
-        text: 'Confirmed Covid Cases till '+strDate
-      }
+        position: "bottom",
+        text: 'Covid Cases till '+strDate
+      },
+      legend: {
+        display: true,
+        position : "bottom",
+        labels: {
+            boxWidth : 20,
+        }
+    }
     }
 });
 
-$("#globalUpdate").on("click",function(){
-    console.log(gData);
+$("#doughnut-chart").mouseover(function(){
+  if(animate1){
+    //console.log(gData);
     updateConfigByMutating(0,0,0);
-    setTimeout(function(){ updateConfigByMutating(gData[3],gData[1],gData[2]); }, 1000);
+    setTimeout(function(){ updateConfigByMutating(gData[3],gData[1],gData[2]); }, 500);
+    animate1 = false;
+  }
 });
 
 

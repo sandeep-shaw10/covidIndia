@@ -68,7 +68,7 @@ body{
 
 .world{
   width:24vw;
-  height:21vw;
+  height:auto;
   position: relative;
   top:-5vw;
   border-radius: 10px;
@@ -124,6 +124,7 @@ body{
 
 @media screen and (max-width: 450px) {
   #siteName {display: none !important;}
+  .head{font-size: 10px !important; ;}
 }
 
 @media screen and (max-width: 768px) {

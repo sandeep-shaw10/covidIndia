@@ -30,18 +30,18 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="d-flex justify-content-around">
-                            <div class="world world-confirm ">
-                                <div class="text-dark">Total Confirm</div>
+                            <div class="world world-confirm p-1">
+                                <div class="text-dark head">Total Confirm</div>
                                 <div class="total" id="world-total-confirm"> <i class="fa fa-refresh fa-spin"></i> </div>
                                 <div class="new text-dark" id="world-new-confirm"> <i class="fa fa-refresh fa-spin"></i> </div>
                             </div>
-                            <div class="world world-recovery" >
-                                <div class="text-dark">Total Recovery</div>
+                            <div class="world world-recovery p-1" >
+                                <div class="text-dark head">Total Recovery</div>
                                 <div class="total" id="world-total-recover"> <i class="fa fa-refresh fa-spin"></i> </div>
                                 <div class="new text-dark" id="world-new-recover"> <i class="fa fa-refresh fa-spin"></i> </div>
                             </div>
-                            <div class="world world-death" >
-                                <div class="text-dark">Total Death</div>
+                            <div class="world world-death p-1" >
+                                <div class="text-dark head">Total Death</div>
                                 <div class="total" id="world-total-death"> <i class="fa fa-refresh fa-spin"></i> </div>
                                 <div class="new text-dark" id="world-new-death"> <i class="fa fa-refresh fa-spin"></i> </div>
                             </div>
@@ -77,11 +77,25 @@
             <div class="row">
                 <div class="col-lg-6 text-center">
                     <canvas id="doughnut-chart" width="90%" height="90%"></canvas>
-                    <button class="btn btn-outline-danger my-2" id="globalUpdate">Update</button>
                 </div>
-                <div class="col-lg-6 my-auto">
-                    <div class="bg-danger mx-auto">
-                        <i class="fa fa-globe fa-5x" aria-hidden="true"></i>
+                <div class="col-lg-6 mx-auto my-5 bg-danger ">
+                    <div class="mx-auto">
+                        <label for="exampleDataList" class="form-label">Datalist example</label>
+                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                        <datalist id="datalistOptions">
+                        <option value="San Francisco">
+                        <option value="New York">
+                        <option value="Seattle">
+                        <option value="Los Angeles">
+                        </datalist>
+                    </div>
+                    <div style="width:100%;">
+                        Name : India
+                        <div style="display: flex;">
+                            <p class="px-2 py-1">Active</p>
+                            <p class="px-2 py-1">Recovery</p>
+                            <p class="px-2 py-1">Death</p>
+                        </div>
                     </div>
                 </div>
             </div>
