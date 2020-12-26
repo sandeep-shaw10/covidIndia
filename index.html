@@ -75,22 +75,18 @@
         <!---Chart-->
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 text-center">
+                <div class="col-lg-6 text-center m-auto">
                     <canvas id="doughnut-chart" width="90%" height="90%"></canvas>
                 </div>
                 <div class="world-search col-lg-6 mx-auto my-5 p-4">
                     <div class="mx-auto text-center">
-                        <h2 for="exampleDataList" class="form-label">WORLDWIDE CASES</h2>
+                        <h2 for="countryDataList" class="form-label">WORLDWIDE CASES</h2>
                         <div class="input-group mb-3">
-                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                            <input class="form-control" list="datalistOptions" id="countryDataList" placeholder="Type to search...">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                                <button class="btn btn-outline-secondary" type="button" id="button-render">Search</button>
                             </div>
                             <datalist id="datalistOptions">
-                                <option value="San Francisco">
-                                <option value="New York">
-                                <option value="Seattle">
-                                <option value="Los Angeles">
                             </datalist>
                         </div>
                     </div>

@@ -5,6 +5,7 @@ var date = new Date();
 var strDate =  date.getDate()+ "/" + (date.getMonth()+1) + "/" + date.getFullYear();
 var animate1 = true;
 var countryName = [];
+var globalData;
 
 
 //Updating Doghnout Chart
@@ -25,7 +26,7 @@ async function getData(){
         //https://api.covid19india.org/data.json
         //https://api.covid19india.org/state_district_wise.json
         const json = await fetch('https://api.covid19api.com/summary');
-        const globalData = await json.json();
+        globalData = await json.json();
         console.log(globalData);
 
         if (globalData.Message == ""){
@@ -144,7 +145,7 @@ var barChart = new Chart(document.getElementById("bar-chart-horizontal"), {
     labels: ["Confirmed", "Recovery", "Death"],
     datasets: [
       {
-        label: "Population (millions)",
+        label: "People",
         backgroundColor: ["#3333ff", "#33ff33","#ff3333"],
         data: [0,0,0]
       }
@@ -157,3 +158,57 @@ var barChart = new Chart(document.getElementById("bar-chart-horizontal"), {
     }
   }
 });
+
+//INPUT Event
+$("#countryDataList").on("input",function(){
+  let x =  $("#countryDataList").val();
+  //console.log(x);
+  generateCountryName(x);
+})
+
+//SEARCH Event
+$("#button-render").on("click",function(){
+  let name = $("#countryDataList").val().toUpperCase();
+  renderCountryData(name);
+})
+
+function generateCountryName(input){
+  var count = 0;
+  $("#datalistOptions").html(" ");
+  for(let i=0; i<countryName.length ; i++ ){
+    if((countryName[i].toUpperCase()).indexOf(input.toUpperCase()) > -1 && count < 10){
+      $("#datalistOptions").append("<option value=\""+countryName[i]+"\"></option>");
+      count++;
+    }
+  }
+}
+
+function renderCountryData(name){
+  let id;
+  for(let i=0; i<countryName.length ;i++){
+    console.log(name+"===="+countryName[i].toUpperCase()+"<<<>>>>"+id+"<<<<>>>>"+i+"___")
+    if(name == countryName[i].toUpperCase()){
+      id = i;
+      console.log(id);
+    }
+  }
+
+  if(id == undefined){
+    window.alert("INVALID NAME");
+  }else{
+    //Render Data
+    console.log(globalData);
+    $("#searchCountry").text(globalData.Countries[id]["Country"]);
+    $(".case-box-recover").text(roundData(globalData.Countries[id]["TotalRecovered"]));
+    $(".case-box-death").text(roundData(globalData.Countries[id]["TotalDeaths"]));
+    $(".case-box-confirm").text("Total Confirmed Cases : "+globalData.Countries[id]["TotalConfirmed"]);
+    let active = globalData.Countries[id]["TotalConfirmed"]-globalData.Countries[id]["TotalRecovered"]-globalData.Countries[id]["TotalDeaths"]
+    $(".case-box-active").text(roundData(active));
+    $("#ctoday").text("Confirm : "+globalData.Countries[id]["NewConfirmed"]);
+    $("#rtoday").text("Recover : "+globalData.Countries[id]["NewRecovered"]);
+    $("#dtoday").text("Death : "+globalData.Countries[id]["NewDeaths"]);
+
+    updateConfigByMutating_Bar(globalData.Countries[id]["NewConfirmed"],globalData.Countries[id]["NewRecovered"],globalData.Countries[id]["NewDeaths"]);
+  }
+
+}
