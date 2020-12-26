@@ -20,22 +20,27 @@ async function getData(){
         const globalData = await json.json();
         console.log(globalData);
 
-        $(".world-confirm .total").text(roundData(globalData.Global["TotalConfirmed"]));
-        $(".world-confirm .new").text("+"+roundData(globalData.Global["NewConfirmed"]));
-        $(".world-recovery .total").text(roundData(globalData.Global["TotalRecovered"]));
-        $(".world-recovery .new").text("+"+roundData(globalData.Global["NewRecovered"]));
-        $(".world-death .total").text(roundData(globalData.Global["TotalDeaths"]));
-        $(".world-death .new").text("+"+roundData(globalData.Global["NewDeaths"]));
-
-        gData[0] = globalData.Global["TotalConfirmed"];
-        gData[1] = globalData.Global["TotalRecovered"];
-        gData[2] = globalData.Global["TotalDeaths"];
-        gData[3] = gData[0] - (gData[1] - gData[2]);
-        
-        updateConfigByMutating(gData[3],gData[1],gData[2]);
+        if (globalData.Message == ""){
+          $(".world-confirm .total").text(roundData(globalData.Global["TotalConfirmed"]));
+          $(".world-confirm .new").text("+"+roundData(globalData.Global["NewConfirmed"]));
+          $(".world-recovery .total").text(roundData(globalData.Global["TotalRecovered"]));
+          $(".world-recovery .new").text("+"+roundData(globalData.Global["NewRecovered"]));
+          $(".world-death .total").text(roundData(globalData.Global["TotalDeaths"]));
+          $(".world-death .new").text("+"+roundData(globalData.Global["NewDeaths"]));
+  
+          gData[0] = globalData.Global["TotalConfirmed"];
+          gData[1] = globalData.Global["TotalRecovered"];
+          gData[2] = globalData.Global["TotalDeaths"];
+          gData[3] = gData[0] - (gData[1] - gData[2]);
+          
+          updateConfigByMutating(gData[3],gData[1],gData[2]);
+        }else{
+          throwError(1, "")
+        }
 
     }catch(error){
-        console.log(`The Error : ${error}`);
+        console.log(`${error}`);
+        throwError(2,error);
     }
 }     
 getData();
@@ -92,5 +97,15 @@ $("#doughnut-chart").mouseover(function(){
     animate1 = false;
   }
 });
+
+function throwError(a,type){
+  if(a==1){
+    console.log("CACHING PROBLEM: SLOW INTERNET");
+  }else if(a == 2){
+    console.log("CACHING PROBLEM: SLOW INTERNET");
+  }else{
+    console.log("ERROR : "+type);
+  }
+}
 
 
