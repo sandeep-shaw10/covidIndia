@@ -79,22 +79,60 @@
                     <canvas id="doughnut-chart" width="90%" height="90%"></canvas>
                 </div>
                 <div class="world-search col-lg-6 mx-auto my-5 p-4">
-                    <div class="mx-auto">
-                        <label for="exampleDataList" class="form-label">WORLDWIDE CASES</label>
-                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-                        <datalist id="datalistOptions">
-                        <option value="San Francisco">
-                        <option value="New York">
-                        <option value="Seattle">
-                        <option value="Los Angeles">
-                        </datalist>
+                    <div class="mx-auto text-center">
+                        <h2 for="exampleDataList" class="form-label">WORLDWIDE CASES</h2>
+                        <div class="input-group mb-3">
+                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                            </div>
+                            <datalist id="datalistOptions">
+                                <option value="San Francisco">
+                                <option value="New York">
+                                <option value="Seattle">
+                                <option value="Los Angeles">
+                            </datalist>
+                        </div>
                     </div>
+                    <hr>
                     <div class="" style="width:100%; ">
-                        Name : India
-                        <div style="display: flex;">
-                            <p class="px-2 py-1">Active</p>
-                            <p class="px-2 py-1">Recovery</p>
-                            <p class="px-2 py-1">Death</p>
+                        <h1 id="searchCountry"></h1>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4 ">
+                                    <div class="case-box m-1 bg-light p-1 text-center">
+                                        <div>ACTIVE</div>
+                                        <div class="case-box-active p-2"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="case-box  bg-light m-1 p-1 text-center">
+                                        <div>RECOVERY</div>
+                                        <div class="case-box-recover p-2"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="case-box bg-light m-1 p-1 text-center">
+                                        <div>DEATH</div>
+                                        <div class="case-box-death p-2"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="case-box-confirm py-3">Total Confirmed Cases :  </h3>
+                        <hr>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 text-center">
+                                    <div><u>TODAY'S INFORMATION</u></div>
+                                    <div id="ctoday" class="text-left">Confirm : </div>
+                                    <div id="rtoday" class="text-left">Recover : </div>
+                                    <div id="dtoday" class="text-left">Death : </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <canvas id="bar-chart-horizontal" width="200px" height="100px"></canvas>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

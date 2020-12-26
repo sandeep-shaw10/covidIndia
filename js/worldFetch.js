@@ -4,11 +4,19 @@ var gData = [];
 var date = new Date();
 var strDate =  date.getDate()+ "/" + (date.getMonth()+1) + "/" + date.getFullYear();
 var animate1 = true;
+var countryName = [];
 
-//Updating Chart
+
+//Updating Doghnout Chart
 function updateConfigByMutating(active,recover,death) {
     globalChart.data.datasets[0].data = [active,recover,death];
     globalChart.update();
+}
+
+//Updating Bar Chart
+function updateConfigByMutating_Bar(active,recover,death) {
+  barChart.data.datasets[0].data = [active,recover,death];
+  barChart.update();
 }
 
 //Fetch World API DATA
@@ -34,6 +42,21 @@ async function getData(){
           gData[3] = gData[0] - (gData[1] - gData[2]);
           
           updateConfigByMutating(gData[3],gData[1],gData[2]);
+
+          $("#searchCountry").text(globalData.Countries[76]["Country"]);
+          $(".case-box-recover").text(roundData(globalData.Countries[76]["TotalRecovered"]));
+          $(".case-box-death").text(roundData(globalData.Countries[76]["TotalDeaths"]));
+          $(".case-box-confirm").text("Total Confirmed Cases : "+globalData.Countries[76]["TotalConfirmed"]);
+          let active = globalData.Countries[76]["TotalConfirmed"]-globalData.Countries[76]["TotalRecovered"]-globalData.Countries[76]["TotalDeaths"]
+          $(".case-box-active").text(roundData(active));
+          $("#ctoday").text("Confirm : "+globalData.Countries[76]["NewConfirmed"]);
+          $("#rtoday").text("Recover : "+globalData.Countries[76]["NewRecovered"]);
+          $("#dtoday").text("Death : "+globalData.Countries[76]["NewDeaths"]);
+
+          updateConfigByMutating_Bar(globalData.Countries[76]["NewConfirmed"],globalData.Countries[76]["NewRecovered"],globalData.Countries[76]["NewDeaths"]);
+
+          saveCountryName(globalData);
+
         }else{
           throwError(1, "")
         }
@@ -77,7 +100,7 @@ var globalChart = new Chart($("#doughnut-chart"), {
       title: {
         display: true,
         position: "bottom",
-        text: 'Covid Cases till '+strDate
+        text: 'Global Covid Cases till '+strDate
       },
       legend: {
         display: true,
@@ -108,4 +131,29 @@ function throwError(a,type){
   }
 }
 
+function saveCountryName(data){
+  for(let i=0; i < data.Countries.length;i++){
+    countryName.push(data.Countries[i]["Country"]);
+  }
+  //console.log(countryName);
+}
 
+var barChart = new Chart(document.getElementById("bar-chart-horizontal"), {
+  type: 'horizontalBar',
+  data: {
+    labels: ["Confirmed", "Recovery", "Death"],
+    datasets: [
+      {
+        label: "Population (millions)",
+        backgroundColor: ["#3333ff", "#33ff33","#ff3333"],
+        data: [0,0,0]
+      }
+    ]
+  },
+  options: {
+    legend: { display: false },
+    title: {
+      display: false,
+    }
+  }
+});
