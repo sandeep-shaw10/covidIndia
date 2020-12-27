@@ -135,6 +135,100 @@
             </div>
         </div>
 
+        
+        <!--Cases in India-->
+        <section class="india">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1>CASES IN INDIA</h1>
+                    </div>
+                    <div class="col-12" id="line-chart-wrap">
+                        <canvas id="line-chart" width="100%" height="100%"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!---Cases in India State-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>STATEWISE CASE INDIA</h1>
+                </div>
+                <div class="state-search col-lg-6 mx-auto my-5 p-4">
+                    <div class="mx-auto text-center">
+                        <h2 for="StateDataList" class="form-label">STATE / UNION TERRITORY</h2>
+                        <div class="input-group mb-3">
+                            <input class="form-control" list="datalistOptionsState" id="StateDataList" placeholder="Type to search...">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="button-render-state">Search</button>
+                            </div>
+                            <datalist id="datalistOptionsState">
+                            </datalist>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="" style="width:100%; ">
+                        <h1 id="searchState"></h1>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4 ">
+                                    <div class="state-case-box m-1 bg-light p-1 text-center">
+                                        <div>ACTIVE</div>
+                                        <div class="state-case-box-active p-2"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="state-case-box  bg-light m-1 p-1 text-center">
+                                        <div>RECOVERY</div>
+                                        <div class="state-case-box-recover p-2"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="state-case-box bg-light m-1 p-1 text-center">
+                                        <div>DEATH</div>
+                                        <div class="state-case-box-death p-2"> <i class="fa fa-refresh fa-spin"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="state-case-box-confirm py-3">Total Confirmed Cases :  </h3>
+                        <hr>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 text-center">
+                                    <div><u>TODAY'S INFORMATION</u></div>
+                                    <div id="ctoday_state" class="text-left">Confirm : </div>
+                                    <div id="rtoday_state" class="text-left">Recover : </div>
+                                    <div id="dtoday_state" class="text-left">Death : </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <canvas id="bar-chart-horizontal-state" width="200px" height="100px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-center m-auto">
+                    <canvas id="polar-chart-state" width="100%" height="100%"></canvas>
+                </div>
+            </div>
+        </div>   
+
+        <!--Total Testing-->
+        <div class="container">
+            <div class="row text-center my-4">
+                <h1>
+                    India : Total Testing
+                </h1>
+                <div class="col-12">
+                    <canvas id="bar-chart-test" width="800" height="450"></canvas>
+                </div>
+            </div>
+        </div>
+
         <!--Footer-->
         <footer class="mt-4">
             <div class="appName">
@@ -164,6 +258,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="js/test.js"></script>
     <script src="js/worldFetch.js"></script>
+    <script src="js/indiaFetch.js"></script>
 </body>
 </html>
 

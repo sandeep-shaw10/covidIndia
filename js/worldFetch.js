@@ -57,13 +57,12 @@ async function getData(){
           updateConfigByMutating_Bar(globalData.Countries[76]["NewConfirmed"],globalData.Countries[76]["NewRecovered"],globalData.Countries[76]["NewDeaths"]);
 
           saveCountryName(globalData);
-
         }else{
-          throwError(1, "")
+          window.alert("PROBLEM : "+globalData["Message"])
         }
 
     }catch(error){
-        console.log(`${error}`);
+        console.log(error);
         throwError(2,error);
     }
 }     
@@ -186,10 +185,10 @@ function generateCountryName(input){
 function renderCountryData(name){
   let id;
   for(let i=0; i<countryName.length ;i++){
-    console.log(name+"===="+countryName[i].toUpperCase()+"<<<>>>>"+id+"<<<<>>>>"+i+"___")
+    //console.log(name+"===="+countryName[i].toUpperCase()+"<<<>>>>"+id+"<<<<>>>>"+i+"___")
     if(name == countryName[i].toUpperCase()){
       id = i;
-      console.log(id);
+      //console.log(id);
     }
   }
 
@@ -197,7 +196,7 @@ function renderCountryData(name){
     window.alert("INVALID NAME");
   }else{
     //Render Data
-    console.log(globalData);
+    //console.log(globalData);
     $("#searchCountry").text(globalData.Countries[id]["Country"]);
     $(".case-box-recover").text(roundData(globalData.Countries[id]["TotalRecovered"]));
     $(".case-box-death").text(roundData(globalData.Countries[id]["TotalDeaths"]));
