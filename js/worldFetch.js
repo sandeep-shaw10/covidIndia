@@ -27,7 +27,7 @@ async function getData(){
         //https://api.covid19india.org/state_district_wise.json
         const json = await fetch('https://api.covid19api.com/summary');
         globalData = await json.json();
-        console.log(globalData);
+        //console.log(globalData);
 
         if (globalData.Message == ""){
           $(".world-confirm .total").text(roundData(globalData.Global["TotalConfirmed"]));
@@ -57,8 +57,13 @@ async function getData(){
           updateConfigByMutating_Bar(globalData.Countries[76]["NewConfirmed"],globalData.Countries[76]["NewRecovered"],globalData.Countries[76]["NewDeaths"]);
 
           saveCountryName(globalData);
+
+          $("#loader").removeClass("show");
+          $("#loader").addClass("hide");
+          $("#content").removeClass("hide");
+          $("#content").addClass("show");
         }else{
-          window.alert("PROBLEM : "+globalData["Message"])
+          //window.alert("PROBLEM : "+globalData["Message"])
         }
 
     }catch(error){

@@ -20,8 +20,29 @@
         <title>Covid Tracker</title>
     </head>
     <body>
-        
-        <!--------MASK & DATA--------->
+        <section id="loader" class="show" >
+            <div class="container">
+                <div class="row text-center mt-5">
+                    <div class="col-12 mt-5">
+                        <div class="m-2 ">
+                            <img class="img-fluid" src="assets/images/introIcon.png" alt="loader" style="width:250px; height:250px;">
+                            <div>Caching in Progress...</div>
+                                <div id="circle" class="my-2 d-flex text-center justify-content-center">
+                                    <div class="mx-1"></div>
+                                    <div class="mx-1"></div>
+                                    <div class="mx-1"></div>
+                                    <div class="mx-1"></div>
+                                    <div class="mx-1"></div>
+                                </div>
+                            </div>
+                            <button class="mt-2 btn btn-outline-dark" onclick=location.reload()> REFRESH </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="content" class="hide">
+            <!--------MASK & DATA--------->
         <div class="bg-image-bg">
             <div class="bg-image">
                 <img src="assets/svg/banner.svg" alt="bg-images">
@@ -224,7 +245,7 @@
                     India : Total Testing
                 </h1>
                 <div class="col-12">
-                    <canvas id="bar-chart-test" width="800" height="450"></canvas>
+                    <canvas id="bar-chart-test" width="1000" height="600"></canvas>
                 </div>
             </div>
         </div>
@@ -249,6 +270,7 @@
                 &copy; Sandeep Shaw 2020
             </div>
         </footer>
+        </section>
 
     <!-- Optional JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
