@@ -1,4 +1,4 @@
-# INDIA COVID TRACKER ![Preview](assets/images/icon1.png)
+# INDIA COVID TRACKER <img src="assets/images/logo.png" width="60px" height="60px"></img>
 
 [![Generic badge](https://img.shields.io/badge/WEBSITE-CLICK%20HERE-1abc9c.svg)](https://sandeep-shaw10.github.io/covidIndia/)
 [![Generic badge](https://img.shields.io/badge/STATUS-ACTIVE-GREEN.svg)](https://sandeep-shaw10.github.io/covidIndia/)
