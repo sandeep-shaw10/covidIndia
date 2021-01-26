@@ -44,17 +44,17 @@ async function getData(){
           
           updateConfigByMutating(gData[3],gData[1],gData[2]);
 
-          $("#searchCountry").text(globalData.Countries[76]["Country"]);
-          $(".case-box-recover").text(roundData(globalData.Countries[76]["TotalRecovered"]));
-          $(".case-box-death").text(roundData(globalData.Countries[76]["TotalDeaths"]));
-          $(".case-box-confirm").text("Total Confirmed Cases : "+globalData.Countries[76]["TotalConfirmed"]);
-          let active = globalData.Countries[76]["TotalConfirmed"]-globalData.Countries[76]["TotalRecovered"]-globalData.Countries[76]["TotalDeaths"]
+          $("#searchCountry").text(globalData.Countries[75]["Country"]);
+          $(".case-box-recover").text(roundData(globalData.Countries[75]["TotalRecovered"]));
+          $(".case-box-death").text(roundData(globalData.Countries[75]["TotalDeaths"]));
+          $(".case-box-confirm").text("Total Confirmed Cases : "+globalData.Countries[75]["TotalConfirmed"]);
+          let active = globalData.Countries[75]["TotalConfirmed"]-globalData.Countries[75]["TotalRecovered"]-globalData.Countries[75]["TotalDeaths"]
           $(".case-box-active").text(roundData(active));
-          $("#ctoday").text("Confirm : "+globalData.Countries[76]["NewConfirmed"]);
-          $("#rtoday").text("Recover : "+globalData.Countries[76]["NewRecovered"]);
-          $("#dtoday").text("Death : "+globalData.Countries[76]["NewDeaths"]);
+          $("#ctoday").text("Confirm : "+globalData.Countries[75]["NewConfirmed"]);
+          $("#rtoday").text("Recover : "+globalData.Countries[75]["NewRecovered"]);
+          $("#dtoday").text("Death : "+globalData.Countries[75]["NewDeaths"]);
 
-          updateConfigByMutating_Bar(globalData.Countries[76]["NewConfirmed"],globalData.Countries[76]["NewRecovered"],globalData.Countries[76]["NewDeaths"]);
+          updateConfigByMutating_Bar(globalData.Countries[75]["NewConfirmed"],globalData.Countries[75]["NewRecovered"],globalData.Countries[75]["NewDeaths"]);
 
           saveCountryName(globalData);
 
