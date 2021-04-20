@@ -44,17 +44,26 @@ async function getData(){
           
           updateConfigByMutating(gData[3],gData[1],gData[2]);
 
-          $("#searchCountry").text(globalData.Countries[75]["Country"]);
-          $(".case-box-recover").text(roundData(globalData.Countries[75]["TotalRecovered"]));
-          $(".case-box-death").text(roundData(globalData.Countries[75]["TotalDeaths"]));
-          $(".case-box-confirm").text("Total Confirmed Cases : "+globalData.Countries[75]["TotalConfirmed"]);
-          let active = globalData.Countries[75]["TotalConfirmed"]-globalData.Countries[75]["TotalRecovered"]-globalData.Countries[75]["TotalDeaths"]
-          $(".case-box-active").text(roundData(active));
-          $("#ctoday").text("Confirm : "+globalData.Countries[75]["NewConfirmed"]);
-          $("#rtoday").text("Recover : "+globalData.Countries[75]["NewRecovered"]);
-          $("#dtoday").text("Death : "+globalData.Countries[75]["NewDeaths"]);
+          //Search India
+          //console.table(globalData.Countries)
+          let i = 0;
+          for(let x=0; x<globalData.Countries.length; x++){
+            if(globalData.Countries[x]["Country"] === 'India'){
+              i = x;
+            }
+          }
 
-          updateConfigByMutating_Bar(globalData.Countries[75]["NewConfirmed"],globalData.Countries[75]["NewRecovered"],globalData.Countries[75]["NewDeaths"]);
+          $("#searchCountry").text(globalData.Countries[i]["Country"]);
+          $(".case-box-recover").text(roundData(globalData.Countries[i]["TotalRecovered"]));
+          $(".case-box-death").text(roundData(globalData.Countries[i]["TotalDeaths"]));
+          $(".case-box-confirm").text("Total Confirmed Cases : "+globalData.Countries[i]["TotalConfirmed"]);
+          let active = globalData.Countries[i]["TotalConfirmed"]-globalData.Countries[i]["TotalRecovered"]-globalData.Countries[i]["TotalDeaths"]
+          $(".case-box-active").text(roundData(active));
+          $("#ctoday").text("Confirm : "+globalData.Countries[i]["NewConfirmed"]);
+          $("#rtoday").text("Recover : "+globalData.Countries[i]["NewRecovered"]);
+          $("#dtoday").text("Death : "+globalData.Countries[i]["NewDeaths"]);
+
+          updateConfigByMutating_Bar(globalData.Countries[i]["NewConfirmed"],globalData.Countries[i]["NewRecovered"],globalData.Countries[i]["NewDeaths"]);
 
           saveCountryName(globalData);
 
