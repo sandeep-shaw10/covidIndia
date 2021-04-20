@@ -43,7 +43,7 @@ async function getIndiaData(){
         //https://api.covid19india.org/state_district_wise.json
         const json = await fetch('https://api.covid19india.org/data.json');
         indiaData = await json.json();
-        //console.log(indiaData);
+        //console.log(indiaData.tested);
 
         //Confirm Case
         for(let i=0;i<indiaData.cases_time_series.length;i++){
@@ -77,7 +77,7 @@ async function getIndiaData(){
                 continue;
             }else{
                 testedIndia[i] = indiaData.tested[i]["totalsamplestested"];
-                testedLabel[i] = convertDate(indiaData.tested[i]["testedasof"]);
+                testedLabel[i] = splitDate(indiaData.tested[i]["testedasof"]);
             }
         }
 
@@ -256,15 +256,39 @@ var test = new Chart($("#bar-chart-test"), {
 
 //Convert Date
 function convertDate(date){
+
+
     if(date.length != 10){
         date = "0"+date;
     }
     let month = date.substring(3,5);
     month = (month==1)?"Jan":(month==2)?"Feb":(month==3)?"Mar":(month==4)?"Apr":(month==5)?"May":(month==6)?"Jun":(month==7)?"Jul":(month==8)?"Aug":(month==9)?"Sep":(month==10)?"Oct":(month==11)?"Nov":"Dec";
-    //console.log(date+" "+date.substring(0,2)+" "+month+" "+date.substring(6,10));
+    console.log(date+" "+date.substring(0,2)+" "+month+" "+date.substring(6,10));
     return (date.substring(0,2)+" "+month+" "+date.substring(6,10));
 
 
+}
+
+
+
+function splitDate(date){
+  let x = date.indexOf("/")
+  let y = date.lastIndexOf("/")
+  let day = date.substring(0,x)
+  let month = date.substring(x+1,y)
+  let year = date.substring(y+1)
+  
+  month = trimZero(month)
+  month = (month==1)?"Jan":(month==2)?"Feb":(month==3)?"Mar":(month==4)?"Apr":(month==5)?"May":(month==6)?"Jun":(month==7)?"Jul":(month==8)?"Aug":(month==9)?"Sep":(month==10)?"Oct":(month==11)?"Nov":"Dec";
+
+  return(day+" "+month+" "+year)
+}
+
+function trimZero(value){
+  if(value[0] === '0'){
+      value = value.substring(1)
+  }
+  return value
 }
   
   
