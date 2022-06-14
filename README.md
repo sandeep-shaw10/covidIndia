@@ -1,7 +1,7 @@
 # INDIA COVID TRACKER <img src="assets/images/logo.png" width="60px" height="60px"></img>
 
 [![Generic badge](https://img.shields.io/badge/WEBSITE-CLICK%20HERE-1abc9c.svg)](https://sandeep-shaw10.github.io/covidIndia/)
-[![Generic badge](https://img.shields.io/badge/STATUS-ACTIVE-GREEN.svg)](https://sandeep-shaw10.github.io/covidIndia/)
+[![Generic badge](https://img.shields.io/badge/STATUS-INACTIVE-aa0000.svg)](https://sandeep-shaw10.github.io/covidIndia/)
 [![Generic badge](https://img.shields.io/badge/VERSION-v1.0-ffff33.svg)](https://sandeep-shaw10.github.io/covidIndia/)
 [![Generic badge](https://img.shields.io/badge/YEAR-2020-ff3333.svg)](https://sandeep-shaw10.github.io/covidIndia/)
 [![Generic badge](https://img.shields.io/badge/LICENSE-MIT-9933ff.svg)](https://github.com/sandeep-shaw10/GraphJS/blob/master/LICENSE)
